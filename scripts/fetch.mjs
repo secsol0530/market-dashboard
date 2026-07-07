@@ -14,21 +14,21 @@ async function fetchJson(url, opts = {}) {
   return res.json();
 }
 
-async function fetchStock(code) {
-  const url = `https://polling.finance.naver.com/api/realtime/domestic/stock/${code}`;
+async function fetchIndices() {
+  const url = "https://polling.finance.naver.com/api/realtime/domestic/index/KOSPI,KOSDAQ";
   try {
     const json = await fetchJson(url);
-    const d = json?.result?.areas?.[0]?.datas?.[0];
-    if (!d) return { code, error: "no-data" };
-    return {
-      code,
-      name: config.stockNames[code] ?? code,
-      price: Number(d.nv),
-      change: Number(d.cv),
-      changeRate: Number(d.cr),
-    };
+    const datas = json?.datas ?? [];
+    return datas.map((d) => ({
+      code: d.itemCode,
+      name: d.stockName ?? d.itemCode,
+      value: Number(String(d.closePrice).replace(/,/g, "")),
+      change: Number(String(d.compareToPreviousClosePrice).replace(/,/g, "")),
+      changeRate: Number(d.fluctuationsRatio),
+      direction: d.compareToPreviousPrice?.code === "5" ? "down" : d.compareToPreviousPrice?.code === "2" ? "up" : "flat",
+    }));
   } catch (e) {
-    return { code, name: config.stockNames[code] ?? code, error: String(e) };
+    return [{ error: String(e) }];
   }
 }
 
@@ -49,6 +49,24 @@ async function fetchStock(code) {
     return { code, name: config.stockNames[code] ?? code, error: String(e) };
   }
 }
+
+async function fetchSectors() {
+  const out = {};
+  for (const [sector, codes] of Object.entries(config.sectors)) {
+    out[sector] = await Promise.all(codes.map(fetchStock));
+  }
+  return out;
+}
+
+async function fetchFx() {
+  try {
+    const json = await fetchJson("https://open.er-api.com/v6/latest/USD");
+    const r = json.rates;
+    const usdKrw = r.KRW;
+    const usdVnd = r.VND;
+    const usdJpy = r.JPY;
+    return {
+      usdKrw,
       usdVnd,
       usdJpy,
       jpyKrwPer100: (usdKrw / usdJpy) * 100,
