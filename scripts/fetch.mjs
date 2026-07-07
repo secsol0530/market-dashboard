@@ -14,24 +14,6 @@ async function fetchJson(url, opts = {}) {
   return res.json();
 }
 
-async function fetchIndices() {
-  const url = "https://polling.finance.naver.com/api/realtime/domestic/index/KOSPI,KOSDAQ";
-  try {
-    const json = await fetchJson(url);
-    const datas = json?.result?.areas?.[0]?.datas ?? [];
-    return datas.map((d) => ({
-      code: d.cd,
-      name: d.nm ?? d.cd,
-      value: Number(d.nv) / 100 || Number(d.nv),
-      change: Number(d.cv) / 100 || Number(d.cv),
-      changeRate: Number(d.cr),
-      direction: d.rf === "5" ? "flat" : d.rf === "2" ? "up" : "down",
-    }));
-  } catch (e) {
-    return [{ error: String(e) }];
-  }
-}
-
 async function fetchStock(code) {
   const url = `https://polling.finance.naver.com/api/realtime/domestic/stock/${code}`;
   try {
@@ -50,23 +32,23 @@ async function fetchStock(code) {
   }
 }
 
-async function fetchSectors() {
-  const out = {};
-  for (const [sector, codes] of Object.entries(config.sectors)) {
-    out[sector] = await Promise.all(codes.map(fetchStock));
-  }
-  return out;
-}
-
-async function fetchFx() {
+async function fetchStock(code) {
+  const url = `https://polling.finance.naver.com/api/realtime/domestic/stock/${code}`;
   try {
-    const json = await fetchJson("https://open.er-api.com/v6/latest/USD");
-    const r = json.rates;
-    const usdKrw = r.KRW;
-    const usdVnd = r.VND;
-    const usdJpy = r.JPY;
+    const json = await fetchJson(url);
+    const d = json?.datas?.[0];
+    if (!d) return { code, error: "no-data" };
     return {
-      usdKrw,
+      code,
+      name: config.stockNames[code] ?? d.stockName ?? code,
+      price: Number(String(d.closePrice).replace(/,/g, "")),
+      change: Number(String(d.compareToPreviousClosePrice).replace(/,/g, "")),
+      changeRate: Number(d.fluctuationsRatio),
+    };
+  } catch (e) {
+    return { code, name: config.stockNames[code] ?? code, error: String(e) };
+  }
+}
       usdVnd,
       usdJpy,
       jpyKrwPer100: (usdKrw / usdJpy) * 100,
