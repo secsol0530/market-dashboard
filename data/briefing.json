@@ -1,0 +1,144 @@
+{
+  "generatedAtUtc": "2026-07-07T09:30:44.650Z",
+  "disclaimer": "규칙기반 자동 수집 데이터입니다. 원인 분석·전략 해석은 포함하지 않습니다. 투자 조언 아님.",
+  "indices": [],
+  "fx": {
+    "usdKrw": 1530.802794,
+    "usdVnd": 26221.777524,
+    "usdJpy": 162.128909,
+    "jpyKrwPer100": 944.1886727307835,
+    "vndKrwPer1000": 58.379062693171825,
+    "source": "open.er-api.com",
+    "note": "은행 매매기준율과 소폭 차이 있을 수 있음(중간환율 기준)"
+  },
+  "sectors": {
+    "반도체": {
+      "constituents": [
+        {
+          "code": "005930",
+          "error": "no-data"
+        },
+        {
+          "code": "000660",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "반도체소부장": {
+      "constituents": [
+        {
+          "code": "084370",
+          "error": "no-data"
+        },
+        {
+          "code": "036930",
+          "error": "no-data"
+        },
+        {
+          "code": "240810",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "물리적AI": {
+      "constituents": [
+        {
+          "code": "277810",
+          "error": "no-data"
+        },
+        {
+          "code": "108860",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "2차전지": {
+      "constituents": [
+        {
+          "code": "373220",
+          "error": "no-data"
+        },
+        {
+          "code": "006400",
+          "error": "no-data"
+        },
+        {
+          "code": "086520",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "바이오": {
+      "constituents": [
+        {
+          "code": "207940",
+          "error": "no-data"
+        },
+        {
+          "code": "068270",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "건설": {
+      "constituents": [
+        {
+          "code": "000720",
+          "error": "no-data"
+        },
+        {
+          "code": "028260",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "양자": {
+      "constituents": [
+        {
+          "code": "030530",
+          "error": "no-data"
+        },
+        {
+          "code": "010470",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    },
+    "배당주": {
+      "constituents": [
+        {
+          "code": "005490",
+          "error": "no-data"
+        },
+        {
+          "code": "032830",
+          "error": "no-data"
+        }
+      ],
+      "upCount": 0,
+      "downCount": 0,
+      "avgChangeRate": null
+    }
+  }
+}
