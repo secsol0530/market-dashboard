@@ -1,0 +1,16 @@
+{
+  "name": "증시브리핑 대시보드",
+  "short_name": "증시브리핑",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0e11",
+  "theme_color": "#0b0e11",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%230b0e11'/%3E%3Ctext x='256' y='340' font-size='300' text-anchor='middle' fill='%23d9a441'%3E%E2%82%A9%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
