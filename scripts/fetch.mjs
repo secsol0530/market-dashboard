@@ -9,7 +9,7 @@ const ROOT = path.resolve(new URL(".", import.meta.url).pathname, "..");
 const config = JSON.parse(await readFile(path.join(ROOT, "config.json"), "utf-8"));
 
 async function fetchJson(url, opts = {}) {
-  const res = await fetch(url, { ...opts, headers: { "User-Agent": "Mozilla/5.0", ...(opts.headers || {}) } });
+  const res = await fetch(url, { ...opts, headers: { "User-Agent": "Mozilla/5.0", "Referer": "https://finance.naver.com", ...(opts.headers || {}) } });
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
   return res.json();
 }
