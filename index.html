@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>증시브리핑 대시보드</title>
+<style>
+  :root {
+    --bg: #0b0e11;
+    --panel: #12161b;
+    --line: #232a31;
+    --text: #e6e9ec;
+    --muted: #7c8994;
+    --up: #e0524d;
+    --down: #3d7ef7;
+    --accent: #d9a441;
+    --mono: "SF Mono", "Roboto Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Pretendard", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    padding: 20px 16px 12px;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; background: var(--bg); z-index: 5;
+  }
+  header h1 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+  header .updated { color: var(--muted); font-size: 12px; margin-top: 4px; font-family: var(--mono); }
+  main { max-width: 720px; margin: 0 auto; padding: 12px 16px 60px; }
+  section { margin-top: 22px; }
+  section h2 {
+    font-size: 12px; letter-spacing: 0.08em; color: var(--accent);
+    text-transform: uppercase; margin: 0 0 8px; font-weight: 600;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .index-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; }
+  .index-row + .index-row { border-top: 1px solid var(--line); }
+  .index-name { font-size: 14px; color: var(--muted); }
+  .index-value { font-family: var(--mono); font-size: 18px; font-weight: 600; }
+  .chg.up { color: var(--up); } .chg.down { color: var(--down); }
+  .fx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fx-item .label { font-size: 12px; color: var(--muted); }
+  .fx-item .value { font-family: var(--mono); font-size: 16px; }
+  .sector { margin-bottom: 10px; }
+  .sector-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+  .sector-head .name { color: var(--text); font-weight: 600; }
+  .sector-head .avg { font-family: var(--mono); color: var(--muted); }
+  .stock-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stock-chip {
+    font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line);
+    font-family: var(--mono);
+  }
+  .disclaimer {
+    font-size: 12px; color: var(--muted); border-left: 2px solid var(--accent);
+    padding-left: 10px; margin-top: 24px;
+  }
+  .empty { color: var(--muted); font-size: 13px; }
+  .error-box {
+    background: #2a1414; border: 1px solid #5a2a2a; color: #ffb4b0;
+    padding: 10px 12px; border-radius: 8px; font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>증시브리핑</h1>
+  <div class="updated" id="updated">불러오는 중...</div>
+</header>
+<main id="app">
+  <div class="empty">데이터 로딩 중...</div>
+</main>
+
+<script>
+const DATA_URL = "./data/briefing.json";
+
+function fmtNum(n, digits = 2) {
+  if (n === null || n === undefined || Number.isNaN(n)) return "-";
+  return Number(n).toLocaleString("ko-KR", { maximumFractionDigits: digits });
+}
+
+function chgClass(rate) {
+  if (rate > 0) return "up";
+  if (rate < 0) return "down";
+  return "";
+}
+
+function renderIndices(indices) {
+  if (!indices || indices[0]?.error) {
+    return `<div class="error-box">지수 데이터 수집 실패: ${indices?.[0]?.error ?? "알 수 없음"}</div>`;
+  }
+  return indices.map(i => `
+    <div class="index-row">
+      <span class="index-name">${i.name}</span>
+      <span>
+        <span class="index-value">${fmtNum(i.value)}</span>
+        <span class="chg ${chgClass(i.changeRate)}">
+          ${i.change > 0 ? "+" : ""}${fmtNum(i.change)} (${i.changeRate > 0 ? "+" : ""}${fmtNum(i.changeRate)}%)
+        </span>
+      </span>
+    </div>
+  `).join("");
+}
+
+function renderFx(fx) {
+  if (!fx || fx.error) return `<div class="error-box">환율 데이터 수집 실패: ${fx?.error ?? "알 수 없음"}</div>`;
+  return `
+    <div class="fx-grid">
+      <div class="fx-item"><div class="label">원 / 달러</div><div class="value">${fmtNum(fx.usdKrw)}</div></div>
+      <div class="fx-item"><div class="label">원 / 100엔</div><div class="value">${fmtNum(fx.jpyKrwPer100)}</div></div>
+      <div class="fx-item"><div class="label">원 / 1000동(VND)</div><div class="value">${fmtNum(fx.vndKrwPer1000)}</div></div>
+      <div class="fx-item"><div class="label">달러 / 동(VND)</div><div class="value">${fmtNum(fx.usdVnd, 0)}</div></div>
+    </div>
+    <div class="empty" style="margin-top:8px;">${fx.note ?? ""}</div>
+  `;
+}
+
+function renderSectors(sectors) {
+  if (!sectors) return `<div class="empty">데이터 없음</div>`;
+  return Object.entries(sectors).map(([name, s]) => {
+    const avg = s.avgChangeRate;
+    const chips = (s.constituents || []).map(c => {
+      if (c.error) return `<span class="stock-chip">${c.name ?? c.code} 실패</span>`;
+      const cls = chgClass(c.changeRate);
+      return `<span class="stock-chip ${cls}">${c.name} ${c.changeRate > 0 ? "+" : ""}${fmtNum(c.changeRate)}%</span>`;
+    }).join("");
+    return `
+      <div class="sector">
+        <div class="sector-head">
+          <span class="name">${name}</span>
+          <span class="avg ${chgClass(avg)}">${avg === null ? "-" : (avg > 0 ? "+" : "") + fmtNum(avg) + "%"}</span>
+        </div>
+        <div class="stock-list">${chips}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+async function load() {
+  try {
+    const res = await fetch(DATA_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    document.getElementById("updated").textContent =
+      "마지막 갱신: " + new Date(data.generatedAtUtc).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" }) + " (KST)";
+
+    document.getElementById("app").innerHTML = `
+      <section>
+        <h2>1. 지수</h2>
+        <div class="card">${renderIndices(data.indices)}</div>
+      </section>
+      <section>
+        <h2>2. 환율</h2>
+        <div class="card">${renderFx(data.fx)}</div>
+      </section>
+      <section>
+        <h2>3. 섹터별 대표종목 등락</h2>
+        <div class="card">${renderSectors(data.sectors)}</div>
+      </section>
+      <div class="disclaimer">${data.disclaimer ?? ""}<br/>수급(개인·외국인·기관·연기금)과 원인 해석·투자전략은 이 앱에 포함되어 있지 않습니다. 규칙기반 자동 수집 수치만 제공합니다.</div>
+    `;
+  } catch (e) {
+    document.getElementById("app").innerHTML = `<div class="error-box">데이터를 불러오지 못했습니다: ${e.message}<br/>GitHub Actions가 아직 한 번도 실행되지 않았거나 data/briefing.json 경로가 잘못되었을 수 있습니다.</div>`;
+  }
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>
