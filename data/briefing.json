@@ -1,21 +1,21 @@
 {
-  "generatedAtUtc": "2026-08-07T02:01:19.604Z",
+  "generatedAtUtc": "2026-08-07T04:34:54.008Z",
   "disclaimer": "규칙기반 자동 수집 데이터입니다. 원인 분석·전략 해석은 포함하지 않습니다. 투자 조언 아님.",
   "indices": [
     {
       "code": "KOSPI",
       "name": "코스피",
-      "value": 6213.67,
-      "change": -82.71,
-      "changeRate": -1.31,
+      "value": 6237.14,
+      "change": -59.24,
+      "changeRate": -0.94,
       "direction": "down"
     },
     {
       "code": "KOSDAQ",
       "name": "코스닥",
-      "value": 780.71,
-      "change": -20.96,
-      "changeRate": -2.61,
+      "value": 785.73,
+      "change": -15.94,
+      "changeRate": -1.99,
       "direction": "down"
     }
   ],
@@ -34,49 +34,49 @@
         {
           "code": "005930",
           "name": "삼성전자",
-          "price": 231250,
-          "change": 750,
-          "changeRate": 0.33
+          "price": 233000,
+          "change": 2500,
+          "changeRate": 1.08
         },
         {
           "code": "000660",
           "name": "SK하이닉스",
-          "price": 1426000,
-          "change": -69000,
-          "changeRate": -4.62
+          "price": 1423000,
+          "change": -72000,
+          "changeRate": -4.82
         }
       ],
       "upCount": 1,
       "downCount": 1,
-      "avgChangeRate": -2.145
+      "avgChangeRate": -1.87
     },
     "반도체소부장": {
       "constituents": [
         {
           "code": "084370",
           "name": "유진테크",
-          "price": 107900,
-          "change": -9300,
-          "changeRate": -7.94
+          "price": 111000,
+          "change": -6200,
+          "changeRate": -5.29
         },
         {
           "code": "036930",
           "name": "주성엔지니어링",
-          "price": 126800,
-          "change": -6600,
-          "changeRate": -4.95
+          "price": 126500,
+          "change": -6900,
+          "changeRate": -5.17
         },
         {
           "code": "240810",
           "name": "원익IPS",
-          "price": 86500,
-          "change": -6100,
-          "changeRate": -6.59
+          "price": 87400,
+          "change": -5200,
+          "changeRate": -5.62
         }
       ],
       "upCount": 0,
       "downCount": 3,
-      "avgChangeRate": -6.493333333333333
+      "avgChangeRate": -5.36
     },
     "물리적AI": {
       "constituents": [
@@ -90,126 +90,126 @@
         {
           "code": "108860",
           "name": "셀바스AI",
-          "price": 10520,
-          "change": -110,
-          "changeRate": -1.03
+          "price": 10910,
+          "change": 280,
+          "changeRate": 2.63
         }
       ],
-      "upCount": 0,
-      "downCount": 2,
-      "avgChangeRate": -4.395
+      "upCount": 1,
+      "downCount": 1,
+      "avgChangeRate": -2.565
     },
     "2차전지": {
       "constituents": [
         {
           "code": "373220",
           "name": "LG에너지솔루션",
-          "price": 349500,
-          "change": 4500,
-          "changeRate": 1.3
+          "price": 351500,
+          "change": 6500,
+          "changeRate": 1.88
         },
         {
           "code": "006400",
           "name": "삼성SDI",
-          "price": 443500,
-          "change": 16500,
-          "changeRate": 3.86
+          "price": 446500,
+          "change": 19500,
+          "changeRate": 4.57
         },
         {
           "code": "086520",
           "name": "에코프로",
-          "price": 82400,
-          "change": -1200,
-          "changeRate": -1.44
+          "price": 83000,
+          "change": -600,
+          "changeRate": -0.72
         }
       ],
       "upCount": 2,
       "downCount": 1,
-      "avgChangeRate": 1.24
+      "avgChangeRate": 1.9100000000000001
     },
     "바이오": {
       "constituents": [
         {
           "code": "207940",
           "name": "삼성바이오로직스",
-          "price": 1520000,
-          "change": 6000,
-          "changeRate": 0.4
+          "price": 1532000,
+          "change": 18000,
+          "changeRate": 1.19
         },
         {
           "code": "068270",
           "name": "셀트리온",
-          "price": 197600,
-          "change": 2600,
-          "changeRate": 1.33
+          "price": 197300,
+          "change": 2300,
+          "changeRate": 1.18
         }
       ],
       "upCount": 2,
       "downCount": 0,
-      "avgChangeRate": 0.865
+      "avgChangeRate": 1.185
     },
     "건설": {
       "constituents": [
         {
           "code": "000720",
           "name": "현대건설",
-          "price": 106100,
-          "change": -6500,
-          "changeRate": -5.77
+          "price": 106600,
+          "change": -6000,
+          "changeRate": -5.33
         },
         {
           "code": "028260",
           "name": "삼성물산",
-          "price": 326500,
-          "change": -7500,
-          "changeRate": -2.25
+          "price": 332000,
+          "change": -2000,
+          "changeRate": -0.6
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -4.01
+      "avgChangeRate": -2.965
     },
     "양자": {
       "constituents": [
         {
           "code": "030530",
           "name": "원익큐엔씨",
-          "price": 18440,
-          "change": -1280,
-          "changeRate": -6.49
+          "price": 18520,
+          "change": -1200,
+          "changeRate": -6.09
         },
         {
           "code": "010470",
           "name": "아이씨디",
-          "price": 4735,
-          "change": -20,
-          "changeRate": -0.42
+          "price": 4755,
+          "change": 0,
+          "changeRate": 0
         }
       ],
       "upCount": 0,
-      "downCount": 2,
-      "avgChangeRate": -3.455
+      "downCount": 1,
+      "avgChangeRate": -3.045
     },
     "배당주": {
       "constituents": [
         {
           "code": "005490",
           "name": "POSCO홀딩스",
-          "price": 321500,
-          "change": 2500,
-          "changeRate": 0.78
+          "price": 325000,
+          "change": 6000,
+          "changeRate": 1.88
         },
         {
           "code": "032830",
           "name": "삼성생명",
-          "price": 273000,
-          "change": -14500,
-          "changeRate": -5.04
+          "price": 276000,
+          "change": -11500,
+          "changeRate": -4
         }
       ],
       "upCount": 1,
       "downCount": 1,
-      "avgChangeRate": -2.13
+      "avgChangeRate": -1.06
     }
   }
 }
