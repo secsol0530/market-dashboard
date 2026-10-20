@@ -1,5 +1,5 @@
 {
-  "generatedAtUtc": "2026-10-20T07:47:56.815Z",
+  "generatedAtUtc": "2026-10-20T12:13:51.615Z",
   "disclaimer": "규칙기반 자동 수집 데이터입니다. 원인 분석·전략 해석은 포함하지 않습니다. 투자 조언 아님.",
   "indices": [
     {
@@ -34,182 +34,182 @@
         {
           "code": "005930",
           "name": "삼성전자",
-          "price": 211000,
-          "change": -7000,
-          "changeRate": -3.21
+          "price": 209000,
+          "change": -9000,
+          "changeRate": -4.13
         },
         {
           "code": "000660",
           "name": "SK하이닉스",
-          "price": 1213000,
-          "change": -64000,
-          "changeRate": -5.01
+          "price": 1190000,
+          "change": -87000,
+          "changeRate": -6.81
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -4.109999999999999
+      "avgChangeRate": -5.47
     },
     "반도체소부장": {
       "constituents": [
         {
           "code": "084370",
           "name": "유진테크",
-          "price": 116100,
-          "change": -9800,
-          "changeRate": -7.78
+          "price": 114800,
+          "change": -11100,
+          "changeRate": -8.82
         },
         {
           "code": "036930",
           "name": "주성엔지니어링",
-          "price": 197100,
-          "change": -12400,
-          "changeRate": -5.92
+          "price": 192200,
+          "change": -17300,
+          "changeRate": -8.26
         },
         {
           "code": "240810",
           "name": "원익IPS",
-          "price": 102800,
-          "change": -5700,
-          "changeRate": -5.25
+          "price": 100700,
+          "change": -7800,
+          "changeRate": -7.19
         }
       ],
       "upCount": 0,
       "downCount": 3,
-      "avgChangeRate": -6.316666666666666
+      "avgChangeRate": -8.09
     },
     "물리적AI": {
       "constituents": [
         {
           "code": "277810",
           "name": "레인보우로보틱스",
-          "price": 368500,
-          "change": -9500,
-          "changeRate": -2.51
+          "price": 362000,
+          "change": -16000,
+          "changeRate": -4.23
         },
         {
           "code": "108860",
           "name": "셀바스AI",
-          "price": 7830,
-          "change": -280,
-          "changeRate": -3.45
+          "price": 7840,
+          "change": -270,
+          "changeRate": -3.33
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -2.98
+      "avgChangeRate": -3.7800000000000002
     },
     "2차전지": {
       "constituents": [
         {
           "code": "373220",
           "name": "LG에너지솔루션",
-          "price": 413000,
-          "change": -19000,
-          "changeRate": -4.4
+          "price": 411500,
+          "change": -20500,
+          "changeRate": -4.75
         },
         {
           "code": "006400",
           "name": "삼성SDI",
-          "price": 556000,
-          "change": -36000,
-          "changeRate": -6.08
+          "price": 555000,
+          "change": -37000,
+          "changeRate": -6.25
         },
         {
           "code": "086520",
           "name": "에코프로",
-          "price": 83500,
-          "change": -6900,
-          "changeRate": -7.63
+          "price": 82900,
+          "change": -7500,
+          "changeRate": -8.3
         }
       ],
       "upCount": 0,
       "downCount": 3,
-      "avgChangeRate": -6.036666666666666
+      "avgChangeRate": -6.433333333333334
     },
     "바이오": {
       "constituents": [
         {
           "code": "207940",
           "name": "삼성바이오로직스",
-          "price": 1383000,
-          "change": -44000,
-          "changeRate": -3.08
+          "price": 1385000,
+          "change": -42000,
+          "changeRate": -2.94
         },
         {
           "code": "068270",
           "name": "셀트리온",
-          "price": 196900,
-          "change": -1300,
-          "changeRate": -0.66
+          "price": 195300,
+          "change": -2900,
+          "changeRate": -1.46
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -1.87
+      "avgChangeRate": -2.2
     },
     "건설": {
       "constituents": [
         {
           "code": "000720",
           "name": "현대건설",
-          "price": 91100,
-          "change": -3800,
-          "changeRate": -4
+          "price": 90000,
+          "change": -4900,
+          "changeRate": -5.16
         },
         {
           "code": "028260",
           "name": "삼성물산",
-          "price": 273500,
-          "change": -11500,
-          "changeRate": -4.04
+          "price": 272000,
+          "change": -13000,
+          "changeRate": -4.56
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -4.02
+      "avgChangeRate": -4.859999999999999
     },
     "양자": {
       "constituents": [
         {
           "code": "030530",
           "name": "원익큐엔씨",
-          "price": 23000,
-          "change": -1250,
-          "changeRate": -5.15
+          "price": 22500,
+          "change": -1750,
+          "changeRate": -7.22
         },
         {
           "code": "010470",
           "name": "아이씨디",
-          "price": 4875,
-          "change": -60,
-          "changeRate": -1.22
+          "price": 4870,
+          "change": -65,
+          "changeRate": -1.32
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -3.185
+      "avgChangeRate": -4.27
     },
     "배당주": {
       "constituents": [
         {
           "code": "005490",
           "name": "POSCO홀딩스",
-          "price": 301000,
-          "change": -13500,
-          "changeRate": -4.29
+          "price": 299500,
+          "change": -15000,
+          "changeRate": -4.77
         },
         {
           "code": "032830",
           "name": "삼성생명",
-          "price": 235500,
-          "change": -9000,
-          "changeRate": -3.68
+          "price": 234500,
+          "change": -10000,
+          "changeRate": -4.09
         }
       ],
       "upCount": 0,
       "downCount": 2,
-      "avgChangeRate": -3.9850000000000003
+      "avgChangeRate": -4.43
     }
   }
 }
